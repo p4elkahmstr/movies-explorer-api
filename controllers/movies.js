@@ -5,7 +5,8 @@ const Movie = require('../models/movie');
 
 module.exports.createMovie = (req, res, next) => {
   const {
-    country, director, duration, year, description, image, trailerLink, nameRU, nameEN, movieId, thumbnail
+    country, director, duration, year, description, image,
+    trailerLink, nameRU, nameEN, movieId, thumbnail,
   } = req.body;
   Movie.create({
     country,
