@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
     required: [true, 'Поле "director" не заполнено'],
   },
   duration: {
-    type: String,
+    type: Number,
     required: [true, 'Поле "duration" не заполнено'],
   },
   year: {
