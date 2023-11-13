@@ -13,6 +13,10 @@ const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process
 
 const app = express();
 
+const allowedCors = [
+  'localhost:3000'
+];
+
 app.use(cors());
 
 const limiter = rateLimit({
@@ -50,6 +54,12 @@ app.use(require('./routes/movies'));
 app.use(errorLogger);
 
 app.use('*', (req, res, next) => {
+  const { origin } = req.headers;
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
   next(new NotFoundError('Страница не найдена'));
 });
 
