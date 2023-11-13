@@ -54,12 +54,6 @@ app.use(require('./routes/movies'));
 app.use(errorLogger);
 
 app.use('*', (req, res, next) => {
-  const { origin } = req.headers;
-
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-
   next(new NotFoundError('Страница не найдена'));
 });
 
@@ -67,6 +61,11 @@ app.use(errors());
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
+  const { origin } = req.headers;
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
 
   res.status(statusCode).send({
     message: statusCode === 500
