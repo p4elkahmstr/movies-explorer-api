@@ -16,8 +16,8 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    "http://api.movies.diploma.nomoredomainsrocks.ru",
-    "https://api.movies.diploma.nomoredomainsrocks.ru",
+    "http://movies.diploma.nomoredomainsrocks.ru",
+    "https://movies.diploma.nomoredomainsrocks.ru",
     "http://localhost:3000",
   ],
   credentials: true,
